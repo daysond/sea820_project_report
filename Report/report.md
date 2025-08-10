@@ -919,3 +919,36 @@ generalizable patterns for distinguishing AI from human text. This highlights a 
 Our TF-IDF feature analysis reveals concerning patterns that could disproportionately impact **non-native English speakers**. The model strongly associates **formal transitional phrases** ("additionally": 7.174, "furthermore", "however": 4.960) and **certain emphatic adjectives** ("essential": 4.628, "significant": 4.588) with AI-generated text. However, these vocabulary are commonly taught in ESL/EFL curricula or high school English writing courses as markers of academic writing proficiency. Non-native speakers might consciously employ these "proper" academic structures and be falsely flagged as AI, while native speakers using casual language ("would": -9.496, "going": -6.944) are classified as human.
 
 This bias is particularly concerning given our finding that the models default to AI classification when uncertain (Example: DistilBERT has AI recall: 0.90 vs human recall: 0.33 on Dataset 3). Non-native speakers, whose writing patterns may differ from the training data's predominantly native English samples, could face systematic misclassification. In academic settings, this could lead to false academic integrity violations, affecting international students and ESL learners who are already facing language barriers.
+
+#### 7.3.3 Vulnerability to Adversarial Manipulation
+
+Our results also demonstrate that models rely heavily on superficial features rather than deep semantic understanding. The presence of topic-specific words like "venus" (-4.666) or "driving" (-4.790) can shift classification toward human, while formal markers push toward AI. This brittleness creates two critical vulnerabilities:
+
+- **False Positives**: Users could intentionally insert human-associated tokens into AI-generated content to escape detection, undermining the tool's purpose in maintaining academic integrity or content authenticity.
+
+- **False Negatives**: Students or content creators could easily trick the system by adding the "human" words we found (like "would", "going", or "driving") into their AI-generated text. Since our analysis shows the model looks for simple patterns, anyone who knows these tricks can make AI writing appear human. This starts a game where people keep finding new ways to beat the detection system.
+
+#### 7.3.4 Temporal Bias and Model Obsolescence
+
+Lastly, our finding that performance degrades significantly across datasets (F1: 0.99 → 0.58), which highlights a critical ethical concern: these detection models become obsolete as AI systems evolve or human writing styles change. The 40% performance drop suggests our model learned source-specific patterns that don't generalize to newer sources. This creates a "detection gap" where:
+
+- Contents generated from older AI models remain detectable while newer ones evade detection
+
+- Users with access to cutting-edge AI tools gain unfair advantages
+
+
+This temporal bias could create a two-tiered system where those with access to the new AI technology can bypass detection, while others using older or open-source models face consequences. Thus, it's crucial to continuously update detection models with samples from new AI systems to minimize the detection gap.
+
+
+#### 7.3.5 Future Work
+
+1. Use multi-source dataset to increase data diversity, include samples from the new AI systems
+2. Implement domain adaptation techniques to handle distribution shifts
+3. Establish standard out-of-distribution test sets for measuring true generalization
+4. Study false positive rates across different demographic groups, especially non-native speakers
+5. Study why models default to AI classification when uncertain
+6. Determine if universal AI markers exist or if all patterns are model-specific
+   
+
+
+
