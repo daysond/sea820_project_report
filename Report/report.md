@@ -875,7 +875,7 @@ The result suggests that:
 
 ### 7.3 Final Reflection
 
-## Data Analysis Conclusions
+#### 7.3.1 Data Analysis Conclusions
 
 Our results reveal that the primary challenge is **data representativeness**. Three key findings support this:
 
@@ -913,3 +913,9 @@ The near-perfect test set performance (F1: 0.98-0.99) demonstrates only that the
 generalizable patterns for distinguishing AI from human text. This highlights a critical limitation: models trained on data from specific sources may fail when evaluating text from newer or different sources.
 
 **TL;DR: The problem is the dataset.**
+
+#### 7.3.2 Ethical Consideration - Bias Against Non-Native English Speakers
+
+Our TF-IDF feature analysis reveals concerning patterns that could disproportionately impact **non-native English speakers**. The model strongly associates **formal transitional phrases** ("additionally": 7.174, "furthermore", "however": 4.960) and **certain emphatic adjectives** ("essential": 4.628, "significant": 4.588) with AI-generated text. However, these vocabulary are commonly taught in ESL/EFL curricula or high school English writing courses as markers of academic writing proficiency. Non-native speakers might consciously employ these "proper" academic structures and be falsely flagged as AI, while native speakers using casual language ("would": -9.496, "going": -6.944) are classified as human.
+
+This bias is particularly concerning given our finding that the models default to AI classification when uncertain (Example: DistilBERT has AI recall: 0.90 vs human recall: 0.33 on Dataset 3). Non-native speakers, whose writing patterns may differ from the training data's predominantly native English samples, could face systematic misclassification. In academic settings, this could lead to false academic integrity violations, affecting international students and ESL learners who are already facing language barriers.
