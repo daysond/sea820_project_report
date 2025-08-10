@@ -907,7 +907,7 @@ Our results reveal that the primary challenge is **data representativeness**. Th
 | totally                 | 3.583   | probably                   | -4.051   |
 
 
-3. **No Model Can Bridge the Gap: **: Both simple and complex models had similar poor performance (F1 ~0.58) on Dataset 3, suggesting that the distribution shift is too substantial for any model architecture to overcome without access to target domain training data. This suggests the models are detecting dataset-specific patterns rather than universal markers of AI-generated text."
+3. **No Model Can Bridge the Gap**: Both simple and complex models had similar poor performance (F1 ~0.58) on Dataset 3, suggesting that the distribution shift is too substantial for any model architecture to overcome without access to target domain training data. This suggests the models are detecting dataset-specific patterns rather than universal markers of AI-generated text."
 
 The near-perfect test set performance (F1: 0.98-0.99) demonstrates only that the model successfully learned the training distribution, not that it learned 
 generalizable patterns for distinguishing AI from human text. This highlights a critical limitation: models trained on data from specific sources may fail when evaluating text from newer or different sources.
