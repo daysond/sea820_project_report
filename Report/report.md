@@ -5,7 +5,7 @@ Due: 2025-08-09
 
 ## Section 1: Dataset Used
 
-Two datasets were used in the project:
+Three datasets were used in the project:
 
 - [AI Vs Human Text](https://www.kaggle.com/datasets/shanegerami/ai-vs-human-text/data)
 
